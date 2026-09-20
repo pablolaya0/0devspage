@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>0Devs - Soluciones de IA en días, no meses</title>
+    <meta name="description" content="0Devs construye soluciones de IA a medida en días. Automatizamos los procesos aburridos de tu negocio para que tú te centres en crecer." />
+    <meta property="og:title" content="0Devs - Soluciones de IA en días, no meses" />
+    <meta property="og:description" content="No vendemos software. Construimos soluciones de IA en días, no meses. Automatizamos lo aburrido." />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%2389ACC8'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-size='42' font-weight='bold'>0D</text></svg>" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+      :root {
+        --primary: #89ACC8;
+        --bg: #E7E4F4;
+        --glass: rgba(255, 255, 255, 0.25);
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      body {
+        font-family: 'Outfit', sans-serif;
+        background-color: var(--bg);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+      }
+
+      .smooth-transition {
+        transition: all 0.7s var(--ease-out-expo);
+      }
+
+      /* 3D Core Engine */
+      .perspective-2000 { perspective: 2000px; }
+      .perspective-3000 { perspective: 3000px; }
+      
+      .preserve-3d { 
+        transform-style: preserve-3d; 
+        backface-visibility: hidden;
+      }
+
+      .translate-z-10 { transform: translateZ(10px); }
+      .translate-z-20 { transform: translateZ(20px); }
+      .translate-z-30 { transform: translateZ(30px); }
+      .translate-z-50 { transform: translateZ(50px); }
+      .translate-z-100 { transform: translateZ(100px); }
+
+      /* Advanced 3D Button Utility */
+      .btn-3d {
+        position: relative;
+        transform-style: preserve-3d;
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background-color 0.4s ease;
+      }
+
+      .btn-3d:hover {
+        transform: translateY(-6px) translateZ(30px) rotateX(10deg);
+        box-shadow: 
+          0 20px 40px -10px rgba(137, 172, 200, 0.5),
+          0 10px 20px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-3d:active {
+        transform: translateY(-2px) translateZ(10px) rotateX(5deg);
+        box-shadow: 0 10px 20px -5px rgba(137, 172, 200, 0.3);
+      }
+
+      /* Advanced 3D Card Behavior */
+      .card-3d-hover {
+        transition: transform 0.8s var(--ease-out-expo), box-shadow 0.8s var(--ease-out-expo);
+      }
+      
+      .card-3d-hover:hover {
+        transform: rotateX(8deg) rotateY(12deg) translateZ(30px);
+        box-shadow: 
+          -20px 40px 60px -10px rgba(137, 172, 200, 0.2),
+          0 10px 20px -5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Floating Animation */
+      @keyframes float-complex {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+        33% { transform: translate3d(10px, -25px, 20px) rotate(2deg); }
+        66% { transform: translate3d(-10px, -15px, -10px) rotate(-1deg); }
+      }
+      .animate-float-3d {
+        animation: float-complex 8s ease-in-out infinite;
+      }
+
+      @keyframes slide-in-3d {
+        from { opacity: 0; transform: translate3d(0, 80px, -150px) rotateX(-15deg); }
+        to { opacity: 1; transform: translate3d(0, 0, 0) rotateX(0deg); }
+      }
+      .animate-slide-3d {
+        animation: slide-in-3d 1.2s var(--ease-out-expo) forwards;
+      }
+
+      /* Enhanced Glassmorphism */
+      .bubble-glass {
+        background: var(--glass);
+        backdrop-filter: blur(25px) saturate(180%);
+        -webkit-backdrop-filter: blur(25px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 
+          inset 0 0 20px rgba(255, 255, 255, 0.2),
+          0 15px 40px -10px rgba(179, 185, 198, 0.3);
+      }
+
+      .glass-shine {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+        pointer-events: none;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: var(--bg); }
+      ::-webkit-scrollbar-thumb {
+        background: #B3B9C6;
+        border-radius: 20px;
+        border: 3px solid var(--bg);
+      }
+      ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+  </head>
+  <body class="min-h-screen bg-[#E7E4F4] relative overflow-x-hidden text-slate-800">
+    <!-- Soft Ambient Gradients -->
+    <div class="fixed top-0 left-1/4 w-[600px] h-[600px] bg-[#89ACC8]/20 rounded-full blur-[140px] pointer-events-none -z-10 animate-pulse"></div>
+    <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-[#D4CFEA]/40 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+
+    <!-- Navigation Header -->
+    <header>
+      <nav class="fixed top-8 left-0 right-0 z-50 px-4 sm:px-6 perspective-2000">
+        <div class="max-w-5xl mx-auto bubble-glass rounded-full h-16 flex items-center justify-between px-6 sm:px-8 smooth-transition hover:shadow-2xl border-white/40 group/nav preserve-3d">
+          <div 
+            class="flex items-center gap-3 group cursor-pointer" 
+            onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+          >
+            <span class="text-lg font-bold tracking-tight text-slate-700 smooth-transition group-hover:text-[#89ACC8]">0Devs</span>
+          </div>
+          
+          <div class="hidden lg:flex items-center gap-8 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-500">
+            <a href="#home" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-105">Inicio</a>
+            <a href="#soluciones" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-105">Soluciones</a>
+            <a href="#proceso" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-105">Proceso</a>
+            <a href="#about" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-105">Ventaja</a>
+            <a href="#team" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-105">Equipo</a>
+          </div>
+
+          <a 
+            href="https://cal.com/0devs" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="bg-[#89ACC8] hover:bg-[#789cb8] text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest btn-3d shadow-md"
+          >
+            Agenda una llamada
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="relative z-10">
+
+      <!-- ========================================== -->
+      <!-- HERO SECTION — Directo, sin "servicios/apps" -->
+      <!-- ========================================== -->
+      <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 sm:px-6 relative overflow-hidden perspective-2000">
+        <!-- 3D Watermark Background -->
+        <div class="absolute top-[35%] right-[-10%] md:right-[-5%] transform -translate-y-1/2 w-[500px] md:w-[900px] opacity-[0.07] pointer-events-none z-0 animate-float-3d select-none">
+          <img 
+            src="https://i.ibb.co/W44787d6/upscalemedia-transformed.png" 
+            alt="0Devs Icon" 
+            class="w-full h-full object-contain rotate-12 scale-110"
+          />
+        </div>
+
+        <div class="max-w-6xl w-full text-center space-y-10 animate-slide-3d relative z-10 preserve-3d">
+          <!-- Main Headline — Directo -->
+          <div class="preserve-3d translate-z-20">
+            <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-slate-800 tracking-tight leading-[1.1] md:leading-[1.05] drop-shadow-xl max-w-5xl mx-auto">
+              No vendemos software.<br/>
+              <span class="text-[#89ACC8] font-light italic relative inline-block">
+                Construimos soluciones de IA en días, no meses.
+                <span class="absolute -bottom-2 left-0 w-full h-1.5 bg-[#89ACC8]/30 blur-[2px] rounded-full"></span>
+              </span>
+            </h1>
+          </div>
+          
+          <!-- Subtítulo — Automatizar lo aburrido -->
+          <p class="text-base sm:text-lg md:text-2xl text-slate-600 max-w-3xl mx-auto font-light leading-relaxed translate-z-10">
+            Esos procesos manuales y repetitivos que te roban horas cada día, <span class="text-slate-900 font-semibold">los automatizamos con IA para que tu equipo se centre en lo que importa</span>: cerrar clientes y hacer crecer el negocio.
+          </p>
+
+          <!-- CTA -->
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 preserve-3d translate-z-30">
+            <a 
+              href="https://cal.com/0devs" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full sm:w-auto px-10 sm:px-12 py-5 bg-[#89ACC8] text-white rounded-full font-bold text-base md:text-lg btn-3d text-center shadow-xl hover:bg-[#789cb8] flex items-center justify-center gap-3"
+            >
+              <span>Agenda una llamada</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a 
+              href="mailto:info@0devs.es" 
+              class="text-sm font-semibold text-[#89ACC8] hover:text-slate-800 smooth-transition underline decoration-[#89ACC8]/30"
+            >
+              o escríbenos a info@0devs.es →
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-10 flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-12 text-xs font-semibold text-slate-500 uppercase tracking-wider">
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold text-base">✓</span>
+              <span>Llamada inicial de 15 min gratis</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold text-base">✓</span>
+              <span>Resultados en &lt; 7 días</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-emerald-500 font-bold text-base">✓</span>
+              <span>Sin tocar tus herramientas actuales</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- LO QUE PODEMOS CONSTRUIR PARA TI (Rápido) -->
+      <!-- Reemplaza la antigua sección de Servicios  -->
+      <!-- ========================================== -->
+      <section id="soluciones" class="py-20 sm:py-32 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto perspective-2000">
+        <div class="text-center mb-16 sm:mb-20 space-y-5">
+          <div class="inline-block px-5 py-2 rounded-full bg-[#89ACC8]/10 text-[#89ACC8] font-bold text-[11px] tracking-[0.3em] uppercase border border-[#89ACC8]/20 shadow-sm">
+            Soluciones Reales
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 tracking-tight">
+            Lo que podemos construir para ti <span class="text-[#89ACC8]">(Rápido)</span>
+          </h2>
+          <p class="text-slate-500 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light">
+            Nada de conceptos abstractos. Esto es lo que hacemos, en la vida real, para negocios como el tuyo.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+          <!-- Ejemplo 1: De Excel a Automático -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[2.5rem] p-8 md:p-10 card-3d-hover preserve-3d shadow-xl flex flex-col justify-between h-full border border-white/40 smooth-transition relative overflow-hidden bg-white/40">
+              <div class="absolute inset-0 glass-shine"></div>
+              
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                  <div class="w-14 h-14 rounded-2xl bg-[#89ACC8]/15 text-[#89ACC8] flex items-center justify-center border border-[#89ACC8]/30 shadow-sm">
+                    <!-- Spreadsheet/table icon -->
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                      <line x1="3" y1="9" x2="21" y2="9"></line>
+                      <line x1="3" y1="15" x2="21" y2="15"></line>
+                      <line x1="9" y1="3" x2="9" y2="21"></line>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#89ACC8] bg-white/70 px-3 py-1 rounded-full border border-[#89ACC8]/20">
+                    Productividad
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-2xl font-bold text-slate-800 tracking-tight group-hover:text-[#89ACC8] smooth-transition">
+                    De Excel a Automático
+                  </h3>
+                  <div class="text-xs font-semibold text-emerald-600 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Cero copiar y pegar. Cero errores humanos.
+                  </div>
+                </div>
+
+                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                  ¿Tu equipo vive pegado a hojas de cálculo, copiando datos entre plataformas y generando informes a mano? Conectamos tus herramientas (Google Sheets, CRM, ERP, Notion…) para que los datos fluyan solos, los informes se generen solos y nadie pierda 4 horas al día en tareas que una IA hace en segundos.
+                </p>
+
+                <div class="space-y-2.5 pt-3 border-t border-slate-200/60">
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Sincronización automática entre plataformas</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Reportes e informes generados automáticamente</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Alertas inteligentes cuando algo necesita atención</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-8 relative z-10">
+                <a
+                  href="mailto:info@0devs.es?subject=Quiero%20automatizar%20mis%20hojas%20de%20c%C3%A1lculo"
+                  class="block w-full py-3.5 bg-white/80 hover:bg-[#89ACC8] hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-200/80 hover:border-transparent smooth-transition shadow-sm text-center"
+                >
+                  Quiero esto para mi negocio
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ejemplo 2: Atención 24/7 sin personal extra -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[2.5rem] p-8 md:p-10 card-3d-hover preserve-3d shadow-xl flex flex-col justify-between h-full border border-white/40 smooth-transition relative overflow-hidden bg-white/40">
+              <div class="absolute inset-0 glass-shine"></div>
+              
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center justify-between flex-wrap gap-3">
+                  <div class="w-14 h-14 rounded-2xl bg-[#89ACC8]/15 text-[#89ACC8] flex items-center justify-center border border-[#89ACC8]/30 shadow-sm">
+                    <!-- Chat/message icon -->
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                      <path d="M8 10h.01"></path>
+                      <path d="M12 10h.01"></path>
+                      <path d="M16 10h.01"></path>
+                    </svg>
+                  </div>
+                  <span class="text-xs font-bold uppercase tracking-widest text-[#89ACC8] bg-white/70 px-3 py-1 rounded-full border border-[#89ACC8]/20">
+                    Atención al Cliente
+                  </span>
+                </div>
+
+                <div class="space-y-2">
+                  <h3 class="text-2xl font-bold text-slate-800 tracking-tight group-hover:text-[#89ACC8] smooth-transition">
+                    Atención 24/7 sin personal extra
+                  </h3>
+                  <div class="text-xs font-semibold text-emerald-600 flex items-center gap-1.5">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    80% de consultas resueltas sin humanos
+                  </div>
+                </div>
+
+                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                  Un agente de IA entrenado con tu documentación, precios y políticas que atiende, resuelve y hasta cierra ventas por WhatsApp, web o email. Funciona las 24h, los 7 días, sin vacaciones ni horas extra. Cuando el cliente necesita un humano, la IA lo deriva al instante con todo el contexto.
+                </p>
+
+                <div class="space-y-2.5 pt-3 border-t border-slate-200/60">
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Respuestas en &lt;3 segundos, siempre</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>WhatsApp Business, web chat y correo integrados</span>
+                  </div>
+                  <div class="flex items-center gap-2 text-xs text-slate-600 font-medium">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#89ACC8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <span>Derivación inteligente a un humano cuando hace falta</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-8 relative z-10">
+                <a
+                  href="mailto:info@0devs.es?subject=Quiero%20un%20agente%20de%20atenci%C3%B3n%2024%2F7"
+                  class="block w-full py-3.5 bg-white/80 hover:bg-[#89ACC8] hover:text-white text-slate-700 font-bold text-xs uppercase tracking-wider rounded-xl border border-slate-200/80 hover:border-transparent smooth-transition shadow-sm text-center"
+                >
+                  Quiero esto para mi negocio
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- CÓMO TRABAJAMOS — 3 pasos con vibecoding -->
+      <!-- ========================================== -->
+      <section id="proceso" class="py-20 sm:py-32 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto perspective-2000">
+        <div class="text-center mb-16 sm:mb-20 space-y-5">
+          <div class="inline-block px-5 py-2 rounded-full bg-[#89ACC8]/10 text-[#89ACC8] font-bold text-[11px] tracking-[0.3em] uppercase border border-[#89ACC8]/20 shadow-sm">
+            Rápido y sin burocracia
+          </div>
+          <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 tracking-tight">
+            Cómo Trabajamos
+          </h2>
+          <p class="text-slate-500 max-w-2xl mx-auto text-base sm:text-lg md:text-xl font-light">
+            Sin reuniones infinitas, sin PowerPoints de 80 páginas. Tres pasos y a volar.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          <!-- Paso 1 -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[2.5rem] p-8 md:p-10 card-3d-hover preserve-3d shadow-xl flex flex-col justify-between h-full border border-white/40 smooth-transition relative overflow-hidden bg-white/50">
+              <div class="absolute inset-0 glass-shine"></div>
+
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center justify-between">
+                  <span class="text-4xl font-extrabold text-[#89ACC8]/40 tracking-tighter">
+                    01
+                  </span>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#89ACC8] bg-[#89ACC8]/10 px-3 py-1 rounded-full border border-[#89ACC8]/20">
+                    15 minutos
+                  </span>
+                </div>
+
+                <div class="w-12 h-12 rounded-xl bg-[#89ACC8]/15 text-[#89ACC8] flex items-center justify-center border border-[#89ACC8]/30">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                  </svg>
+                </div>
+
+                <div class="space-y-1">
+                  <h3 class="text-xl md:text-2xl font-bold text-slate-800 tracking-tight">
+                    Nos cuentas tu problema
+                  </h3>
+                  <p class="text-xs font-semibold text-[#89ACC8]">
+                    Una llamada rápida, sin compromiso
+                  </p>
+                </div>
+
+                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                  Cuéntanos qué te duele: qué tareas te quitan horas, dónde pierdes dinero, qué te gustaría automatizar. Nosotros escuchamos, preguntamos lo justo y te decimos si podemos ayudarte (y cómo).
+                </p>
+              </div>
+
+              <div class="pt-6 relative z-10 border-t border-slate-200/50 mt-6 flex items-center justify-start text-xs text-slate-400 font-medium">
+                <span>Paso 1 de 3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[2.5rem] p-8 md:p-10 card-3d-hover preserve-3d shadow-xl flex flex-col justify-between h-full border border-white/40 smooth-transition relative overflow-hidden bg-white/50">
+              <div class="absolute inset-0 glass-shine"></div>
+
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center justify-between">
+                  <span class="text-4xl font-extrabold text-[#89ACC8]/40 tracking-tighter">
+                    02
+                  </span>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#89ACC8] bg-[#89ACC8]/10 px-3 py-1 rounded-full border border-[#89ACC8]/20">
+                    Días, no meses
+                  </span>
+                </div>
+
+                <div class="w-12 h-12 rounded-xl bg-[#89ACC8]/15 text-[#89ACC8] flex items-center justify-center border border-[#89ACC8]/30">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                  </svg>
+                </div>
+
+                <div class="space-y-1">
+                  <h3 class="text-xl md:text-2xl font-bold text-slate-800 tracking-tight">
+                    Lo vibecodeamos con IA en días
+                  </h3>
+                  <p class="text-xs font-semibold text-[#89ACC8]">
+                    Construimos rápido, iteramos contigo
+                  </p>
+                </div>
+
+                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                  Nos ponemos manos a la obra con las herramientas de IA más avanzadas del mercado. Nada de meses de desarrollo. En días tienes un prototipo funcionando que puedes probar, tocar y validar antes de lanzar.
+                </p>
+              </div>
+
+              <div class="pt-6 relative z-10 border-t border-slate-200/50 mt-6 flex items-center justify-start text-xs text-slate-400 font-medium">
+                <span>Paso 2 de 3</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[2.5rem] p-8 md:p-10 card-3d-hover preserve-3d shadow-xl flex flex-col justify-between h-full border border-white/40 smooth-transition relative overflow-hidden bg-white/50">
+              <div class="absolute inset-0 glass-shine"></div>
+
+              <div class="space-y-6 relative z-10">
+                <div class="flex items-center justify-between">
+                  <span class="text-4xl font-extrabold text-[#89ACC8]/40 tracking-tighter">
+                    03
+                  </span>
+                  <span class="text-[10px] font-bold uppercase tracking-widest text-[#89ACC8] bg-[#89ACC8]/10 px-3 py-1 rounded-full border border-[#89ACC8]/20">
+                    🚀 Live
+                  </span>
+                </div>
+
+                <div class="w-12 h-12 rounded-xl bg-[#89ACC8]/15 text-[#89ACC8] flex items-center justify-center border border-[#89ACC8]/30">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                  </svg>
+                </div>
+
+                <div class="space-y-1">
+                  <h3 class="text-xl md:text-2xl font-bold text-slate-800 tracking-tight">
+                    Empiezas a ahorrar horas
+                  </h3>
+                  <p class="text-xs font-semibold text-[#89ACC8]">
+                    Resultados medibles desde el primer día
+                  </p>
+                </div>
+
+                <p class="text-slate-600 text-sm leading-relaxed font-light">
+                  Lanzamos la automatización en producción, capacitamos a tu equipo en minutos y monitoreamos que todo funcione como un reloj. Tú solo ves cómo se liberan horas y se reducen costes.
+                </p>
+              </div>
+
+              <div class="pt-6 relative z-10 border-t border-slate-200/50 mt-6 flex items-center justify-start text-xs text-slate-400 font-medium">
+                <span>Paso 3 de 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-16 text-center">
+          <a
+            href="https://cal.com/0devs"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-10 py-4 bg-[#89ACC8] text-white rounded-full font-bold text-sm uppercase tracking-wider btn-3d shadow-lg"
+          >
+            Empezar ahora
+          </a>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- ABOUT / VENTAJA COMPETITIVA               -->
+      <!-- ========================================== -->
+      <section id="about" class="py-20 sm:py-32 px-4 sm:px-6 md:px-12 bg-white/10 backdrop-blur-sm relative overflow-hidden perspective-2000">
+        <div class="max-w-6xl mx-auto relative z-10">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+            <div class="space-y-8">
+              <div class="space-y-4">
+                <div class="inline-block px-5 py-2 rounded-full bg-[#89ACC8]/10 text-[#89ACC8] font-bold text-[11px] tracking-widest uppercase border border-[#89ACC8]/20 shadow-sm">
+                  Nuestra Ventaja Competitiva
+                </div>
+                <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 leading-tight tracking-tight">
+                  Nativos de la IA. <br/>
+                  <span class="text-[#89ACC8]">Cero burocracia.</span>
+                </h2>
+              </div>
+
+              <p class="text-slate-600 leading-relaxed text-lg sm:text-xl md:text-2xl font-light italic border-l-4 border-[#89ACC8] pl-6 py-3 bg-gradient-to-r from-[#89ACC8]/5 to-transparent">
+                "No adaptamos procesos del pasado: nacimos programando con los modelos de IA más avanzados para entregar <span class="text-slate-900 font-semibold underline decoration-[#89ACC8]/40">sistemas que generan impacto y facturación real</span> desde la primera semana."
+              </p>
+
+              <div class="grid grid-cols-2 gap-4 sm:gap-6 pt-4">
+                <div class="p-5 rounded-2xl bg-white/40 border border-white/60">
+                  <span class="text-3xl font-black text-slate-800 block">7x</span>
+                  <span class="text-xs font-medium text-slate-500">Más rápidos que consultoras tradicionales</span>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/40 border border-white/60">
+                  <span class="text-3xl font-black text-slate-800 block">100%</span>
+                  <span class="text-xs font-medium text-slate-500">Alineados a métricas de negocio y ROI</span>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <div class="w-32 h-2 bg-[#89ACC8] rounded-full shadow-[0_4px_10px_rgba(137,172,200,0.4)]"></div>
+              </div>
+            </div>
+            
+            <div class="relative flex justify-center group perspective-3000">
+              <div class="w-full max-w-md aspect-square bubble-glass rounded-[4rem] p-16 md:p-20 card-3d-hover preserve-3d shadow-[0_50px_100px_-20px_rgba(137,172,200,0.3)] flex items-center justify-center animate-float-3d border-white/80 relative overflow-hidden bg-white">
+                <!-- Internal Depth Layer -->
+                <div class="absolute inset-8 border border-[#89ACC8]/10 rounded-[3rem] translate-z-10 pointer-events-none"></div>
+                
+                <img 
+                  src="https://i.ibb.co/W44787d6/upscalemedia-transformed.png" 
+                  alt="0Devs Brand" 
+                  class="w-full h-full object-contain opacity-95 translate-z-100 group-hover:scale-110 smooth-transition drop-shadow-2xl"
+                />
+                
+                <div class="absolute inset-0 bg-gradient-to-tr from-[#89ACC8]/10 to-transparent pointer-events-none opacity-40"></div>
+                <div class="absolute inset-0 glass-shine"></div>
+              </div>
+              
+              <!-- Background Decorative Element -->
+              <div class="absolute -z-10 -bottom-10 -right-10 w-48 h-48 bg-[#89ACC8]/15 rounded-full blur-3xl animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- EQUIPO — Con actitud (Walter/Jesse/Saul)   -->
+      <!-- ========================================== -->
+      <section id="team" class="py-20 sm:py-32 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto perspective-2000">
+        <div class="text-center mb-16 sm:mb-20 space-y-5">
+          <h2 class="text-3xl sm:text-4xl md:text-6xl font-bold text-slate-800 tracking-tight">
+            El Equipo Detrás de <span class="text-[#89ACC8]">0Devs</span>
+          </h2>
+          <p class="text-slate-600 max-w-3xl mx-auto text-base sm:text-lg md:text-xl font-light leading-relaxed">
+            <span class="text-slate-900 font-bold">0Devs = Cero Desarrollo Lento.</span> Jóvenes, rápidos y nativos en Inteligencia Artificial. Listos para modernizar tu negocio.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+          <!-- Pablo Olaya -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[3rem] p-10 md:p-12 card-3d-hover preserve-3d shadow-xl flex flex-col items-center text-center group border border-white/40 smooth-transition h-full justify-between relative overflow-hidden min-h-[300px] bg-white/40">
+              <div class="absolute inset-0 glass-shine"></div>
+              
+              <div class="space-y-4 preserve-3d translate-z-50 w-full pt-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight group-hover:text-[#89ACC8] smooth-transition translate-z-50">
+                  Pablo Olaya
+                </h3>
+              </div>
+              
+              <div class="pt-8 preserve-3d translate-z-100 flex items-center gap-3">
+                <a 
+                  href="https://github.com/pablolaya0" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="w-12 h-12 rounded-xl border border-slate-200 bg-white/70 flex items-center justify-center text-slate-500 hover:text-[#89ACC8] hover:border-[#89ACC8] hover:shadow-lg smooth-transition transform hover:scale-110"
+                  aria-label="GitHub Profile de Pablo Olaya"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="absolute -bottom-10 -left-10 text-9xl font-bold text-[#89ACC8]/5 select-none pointer-events-none transform -rotate-12 translate-z-[-10px]">
+                0D
+              </div>
+            </div>
+          </div>
+
+          <!-- Rongyu Hu -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[3rem] p-10 md:p-12 card-3d-hover preserve-3d shadow-xl flex flex-col items-center text-center group border border-white/40 smooth-transition h-full justify-between relative overflow-hidden min-h-[300px] bg-white/40">
+              <div class="absolute inset-0 glass-shine"></div>
+              
+              <div class="space-y-4 preserve-3d translate-z-50 w-full pt-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight group-hover:text-[#89ACC8] smooth-transition translate-z-50">
+                  Rongyu Hu
+                </h3>
+              </div>
+              
+              <div class="pt-8 preserve-3d translate-z-100 flex items-center gap-3">
+                <a 
+                  href="https://github.com/HardXploitDev" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="w-12 h-12 rounded-xl border border-slate-200 bg-white/70 flex items-center justify-center text-slate-500 hover:text-[#89ACC8] hover:border-[#89ACC8] hover:shadow-lg smooth-transition transform hover:scale-110"
+                  aria-label="GitHub Profile de Rongyu Hu"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="absolute -bottom-10 -left-10 text-9xl font-bold text-[#89ACC8]/5 select-none pointer-events-none transform -rotate-12 translate-z-[-10px]">
+                0D
+              </div>
+            </div>
+          </div>
+
+          <!-- Manuel Zafrilla -->
+          <div class="group perspective-3000 h-full">
+            <div class="bubble-glass rounded-[3rem] p-10 md:p-12 card-3d-hover preserve-3d shadow-xl flex flex-col items-center text-center group border border-white/40 smooth-transition h-full justify-between relative overflow-hidden min-h-[300px] bg-white/40">
+              <div class="absolute inset-0 glass-shine"></div>
+              
+              <div class="space-y-4 preserve-3d translate-z-50 w-full pt-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-800 tracking-tight group-hover:text-[#89ACC8] smooth-transition translate-z-50">
+                  Manuel Zafrilla
+                </h3>
+              </div>
+              
+              <div class="pt-8 preserve-3d translate-z-100 flex items-center gap-3">
+                <a 
+                  href="https://github.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="w-12 h-12 rounded-xl border border-slate-200 bg-white/70 flex items-center justify-center text-slate-500 hover:text-[#89ACC8] hover:border-[#89ACC8] hover:shadow-lg smooth-transition transform hover:scale-110"
+                  aria-label="GitHub Profile de Manuel Zafrilla"
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                  </svg>
+                </a>
+              </div>
+
+              <div class="absolute -bottom-10 -left-10 text-9xl font-bold text-[#89ACC8]/5 select-none pointer-events-none transform -rotate-12 translate-z-[-10px]">
+                0D
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- CONTACTO — mailto y llamada visible        -->
+      <!-- ========================================== -->
+      <section id="contact" class="py-20 sm:py-32 px-4 sm:px-6 md:px-12 max-w-4xl mx-auto perspective-2000">
+        <div class="bubble-glass rounded-[2.5rem] sm:rounded-[3.5rem] p-8 sm:p-10 md:p-20 shadow-2xl border border-white/40 preserve-3d card-3d-hover relative overflow-hidden bg-white/60 text-center space-y-10">
+          <div class="absolute inset-0 glass-shine"></div>
+          
+          <div class="space-y-6 relative z-10">
+            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#89ACC8]/15 text-[#89ACC8] font-bold text-[10px] tracking-[0.3em] uppercase border border-[#89ACC8]/20 shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              Hablemos
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-slate-800 tracking-tight leading-tight max-w-2xl mx-auto">
+              ¿Listo para dejar de perder <span class="text-[#89ACC8]">horas</span> cada semana?
+            </h2>
+
+            <p class="text-slate-600 text-base sm:text-lg md:text-xl font-light leading-relaxed max-w-2xl mx-auto">
+              Mándanos un email o agenda una llamada de 15 minutos. Sin compromiso, sin tecnicismos, sin PowerPoints. Solo soluciones.
+            </p>
+          </div>
+
+          <!-- Benefits Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto relative z-10 pt-2 text-left">
+            <div class="p-4 rounded-2xl bg-white/70 border border-white flex items-start gap-3">
+              <span class="text-emerald-500 font-bold text-lg">✓</span>
+              <span class="text-xs font-semibold text-slate-700">Diagnóstico 100% personalizado</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 border border-white flex items-start gap-3">
+              <span class="text-emerald-500 font-bold text-lg">✓</span>
+              <span class="text-xs font-semibold text-slate-700">Ahorro estimado en costes y horas</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/70 border border-white flex items-start gap-3">
+              <span class="text-emerald-500 font-bold text-lg">✓</span>
+              <span class="text-xs font-semibold text-slate-700">Sin compromiso ni tecnicismos</span>
+            </div>
+          </div>
+
+          <!-- Direct Action Box -->
+          <div class="pt-4 relative z-10 space-y-6">
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-5">
+              <a 
+                href="https://calendly.com/0devs-info"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="w-full sm:w-auto px-10 py-5 bg-[#89ACC8] hover:bg-[#789cb8] text-white rounded-full font-bold text-base md:text-lg btn-3d shadow-xl flex items-center justify-center gap-3"
+              >
+                <span>Agenda una llamada</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+
+            <div class="pt-4">
+              <span class="text-xs text-slate-400 block mb-2 font-medium">O escríbenos directamente a:</span>
+              <a 
+                href="mailto:info@0devs.es" 
+                class="text-xl sm:text-2xl md:text-3xl font-light text-[#89ACC8] hover:text-slate-900 transition underline decoration-[#89ACC8]/30"
+              >
+                info@0devs.es
+              </a>
+            </div>
+          </div>
+
+          <div class="pt-10 border-t border-slate-200/50 text-center opacity-70 relative z-10">
+            <p class="text-slate-400 text-[10px] uppercase tracking-[0.4em]">0Devs • Soluciones de IA en días, no meses</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-16 px-4 sm:px-6 md:px-12 border-t border-white/10 bubble-glass mt-32">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+        <div class="space-y-5 text-center md:text-left">
+          <div class="flex items-center justify-center md:justify-start gap-4">
+            <span class="text-lg font-bold tracking-tight text-slate-700 uppercase">0Devs Group</span>
+          </div>
+          <a href="mailto:info@0devs.es" class="text-xs text-[#89ACC8] font-bold hover:underline block">info@0devs.es</a>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-6 sm:gap-8 text-[10px] font-bold uppercase tracking-[0.25em] text-slate-500">
+          <a href="#soluciones" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-110">Soluciones</a>
+          <a href="#proceso" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-110">Proceso</a>
+          <a href="#about" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-110">Ventaja</a>
+          <a href="#team" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-110">Equipo</a>
+          <a href="#contact" class="nav-link hover:text-[#89ACC8] smooth-transition hover:scale-110">Contacto</a>
+        </div>
+
+        <div class="text-[9px] text-slate-400 font-bold uppercase tracking-[0.4em]">
+          © <span id="current-year">2026</span> 0Devs.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Native Vanilla JavaScript -->
+    <script>
+      // Actualizar año dinámico
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // Smooth scroll con compensación para navbar fija
+      document.querySelectorAll('.nav-link').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          const href = this.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              const navbarOffset = 100;
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - navbarOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
